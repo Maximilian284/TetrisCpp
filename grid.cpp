@@ -4,10 +4,10 @@
 using namespace std;
 
 Grid::Grid(){
-    height = 10;
+    height = 20;
     width = 20;
-    start_y = 0;
-    start_x = 0;
+    start_y = 5;
+    start_x = 5;
 
     initscr();
 
