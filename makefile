@@ -1,5 +1,5 @@
-main: main.o grid.o functions.o block.o
-	gcc -o main main.o grid.o functions.o block.o -lncurses
+main: main.o grid.o functions.o block.o menu.o
+	gcc -o main main.o grid.o functions.o block.o menu.o -lncurses
 	rm -f *.o
 
 main.o: main.cpp
@@ -13,6 +13,9 @@ functions.o: functions.cpp
 
 block.o: block.cpp
 	gcc -c block.cpp
+
+menu.o: menu.cpp
+	gcc -c menu.cpp
 
 cleano:
 	rm -f *.o 

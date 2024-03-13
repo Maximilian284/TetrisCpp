@@ -1,25 +1,27 @@
 #include <ncurses.h>
 #include "grid.hpp"
 
-using namespace std;
+Grid::Grid(int h, int w, int y, int x){
+    height = h;
+    width = w;
+    start_y = y;
+    start_x = x;
+    running = true;
+}
 
-Grid::Grid(){
-    height = 20;
-    width = 20;
-    start_y = 5;
-    start_x = 5;
-
+void Grid::show(){
     initscr();
 
-    WINDOW *window= newwin(height, width, start_y, start_x);
+    WINDOW *window = newwin(height, width, start_y, start_x);
     refresh();
 
-    char borderTB = '-';
-    char borderLR = '|';
+    char borderT = ' ';
+    char borderB = '=';
+    char borderLR = '!';
     char corner = '+';
 
-    wborder(window, borderLR, borderLR, borderTB, borderTB, corner, corner, corner, corner);
-
+    wborder(window, borderLR, borderLR, borderT, borderB, corner, corner, corner, corner);
+    mvprintw(1, (start_x + width - 6)/2, "Tetris");
     wrefresh(window);
 
     int close = getch();
