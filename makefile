@@ -1,6 +1,6 @@
 main: main.o grid.o functions.o block.o menu.o
 	gcc -o main main.o grid.o functions.o block.o menu.o -lncurses
-	rm -f *.o
+	rm -f *.o	
 
 main.o: main.cpp
 	gcc -c main.cpp

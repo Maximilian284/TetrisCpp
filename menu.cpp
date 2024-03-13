@@ -1,13 +1,13 @@
 #include <ncurses.h>
-#include "menu.hpp"
+#include "classes.hpp"
 
 // Constructor
 // initializes the height, width, start_y, and start_x
 // 
-// @param h = height 
-// @param w = width
-// @param y = start_y
-// @param x = start_x
+// @param int h = height 
+// @param int w = width
+// @param int y = start_y
+// @param int x = start_x
 Menu::Menu(int h, int w, int y, int x){
     height = h;
     width = w;
@@ -15,42 +15,51 @@ Menu::Menu(int h, int w, int y, int x){
     start_x = x;
 };
 
-// Menu method: show
+// Menu Method: show
 // shows the menu
 //
 // @return void
 void Menu::show(){
+    // initializes the ncurses library
     initscr();
 
-    WINDOW *window= newwin(height, width, start_y, start_x);
+    // creates a window with the given height, width, start_y, and start_x
+    WINDOW *window = newwin(height, width, start_y, start_x);
     refresh();
 
     char border = ' ';
 
-    wborder(window, border, border, border, border, border, border, border, border);
-    
+    // prints the word "Tetris" in the middle of the window
     mvprintw(start_y+1, (start_x + width - 6)/2, "Tetris");
-    wrefresh(window);
 
-    char name[10];
+    char name[12];
 
-    mvprintw(start_y + 5, start_x + 1, "Enter your name: ");
+    mvprintw(start_y + 4, start_x + 1, "Enter your name: ");
+    // gets a string from the user
     getstr(name);
 
-    clear();
-    mvprintw(start_y+1, (start_x + width - 6)/2, "Tetris");
-    
-    mvprintw(start_y + 5, start_x + 1, "Hello, %s", name);
+    // refreshes the window to show the changes
+    wrefresh(window);
 
-    mvprintw(start_y + 5, start_x + 1, "Press any key to play", name);
+    // clears the window
+    clear();
+
+    mvprintw(start_y + 1, (start_x + width - 6)/2, "Tetris");
+    
+    mvprintw(start_y + 4, start_x + 1, "Hello, %s", name);
+
+    mvprintw(start_y + 6, start_x + 1, "Press any key to play", name);
 
     wrefresh(window);
 
+    // waits for a key to be pressed (input from the user)
     getch();
-
-    endwin();
 };
 
+// Menu Method: hide
+// hides the menu
+//
+// @return void
 void Menu::hide(){
     endwin();
 };
