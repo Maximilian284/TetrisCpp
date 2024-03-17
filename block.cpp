@@ -42,8 +42,9 @@ bool Block::checkCollision(Grid grid){
             }
         }
     }   
-};
 
+    return false;
+};
 
 void Block::move(Grid grid, int y, int x){
     this->y += y;
