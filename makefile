@@ -22,3 +22,13 @@ cleano:
 
 run:
 	./main
+
+
+# g++ -c main.cpp 
+# g++ -c grid.cpp
+# g++ -c functions.cpp
+# g++ -c block.cpp  
+# g++ -c menu.cpp 
+# g++ -o main main.o grid.o functions.o block.o menu.o -lncurses
+# rm  *.o  
+## start main.exe
