@@ -1,14 +1,15 @@
-#include <ncurses.h>
-#include "classes.hpp"
+#include <ncurses/ncurses.h>
+#include "../classes.hpp"
 
 // Constructor
 // initializes the height, width, start_y, and start_x
-// 
-// @param int h = height 
+//
+// @param int h = height
 // @param int w = width
 // @param int y = start_y
 // @param int x = start_x
-Menu::Menu(int h, int w, int y, int x){
+Menu::Menu(int h, int w, int y, int x)
+{
     height = h;
     width = w;
     start_y = y;
@@ -19,7 +20,8 @@ Menu::Menu(int h, int w, int y, int x){
 // shows the menu
 //
 // @return void
-void Menu::show(){
+void Menu::show()
+{
     // initializes the ncurses library
     initscr();
 
@@ -30,7 +32,7 @@ void Menu::show(){
     char border = ' ';
 
     // prints the word "Tetris" in the middle of the window
-    mvprintw(start_y+1, (start_x + width - 6)/2, "Tetris");
+    mvprintw(start_y + 1, (start_x + width - 6) / 2, "Tetris");
 
     char name[12];
 
@@ -44,8 +46,8 @@ void Menu::show(){
     // clears the window
     clear();
 
-    mvprintw(start_y + 1, (start_x + width - 6)/2, "Tetris");
-    
+    mvprintw(start_y + 1, (start_x + width - 6) / 2, "Tetris");
+
     mvprintw(start_y + 4, start_x + 1, "Hello, %s", name);
 
     mvprintw(start_y + 6, start_x + 1, "Press any key to play", name);
@@ -60,6 +62,7 @@ void Menu::show(){
 // hides the menu
 //
 // @return void
-void Menu::hide(){
+void Menu::hide()
+{
     endwin();
 };

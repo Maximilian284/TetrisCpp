@@ -1,5 +1,5 @@
-#include <ncurses.h>
-#include "classes.hpp"
+#include <ncurses/ncurses.h>
+#include "../classes.hpp"
 
 // Constructor
 // initializes the height, width, start_y, and start_x
@@ -8,18 +8,24 @@
 // @param int w = width
 // @param int y = start_y
 // @param int x = start_x
-Grid::Grid(int h, int w, int y, int x){
+Grid::Grid(int h, int w, int y, int x)
+{
     height = h;
     width = w;
     start_y = y;
     start_x = x;
     running = true;
 
-    for (int i = 0; i < 22; i++){
-        for (int j = 0; j < 12; j++){
-            if (j == 0 || j == 11 || i == 21){
+    for (int i = 0; i < 22; i++)
+    {
+        for (int j = 0; j < 12; j++)
+        {
+            if (j == 0 || j == 11 || i == 21)
+            {
                 matrix[i][j] = -1;
-            } else {
+            }
+            else
+            {
                 matrix[i][j] = 0;
             }
         }
@@ -30,7 +36,8 @@ Grid::Grid(int h, int w, int y, int x){
 // shows the grid
 //
 // @return void
-void Grid::show(){
+void Grid::show()
+{
     initscr();
     noecho();
     cbreak();
@@ -45,7 +52,7 @@ void Grid::show(){
     char corner = '+';
 
     wborder(window, borderLR, borderLR, borderT, borderB, corner, corner, corner, corner);
-    mvprintw(1, (start_x + width - 6)/2, "Tetris");
+    mvprintw(1, (start_x + width - 6) / 2, "Tetris");
     wrefresh(window);
 }
 
@@ -53,7 +60,8 @@ void Grid::show(){
 // hides the grid
 //
 // @return void
-void Grid::hide(){
+void Grid::hide()
+{
     endwin();
 }
 
@@ -62,10 +70,14 @@ void Grid::hide(){
 //
 // @param Block block = block to draw
 // @return void
-void Grid::draw(Block block){
-    for (int y = 0; y < 4; y++){
-        for (int x = 0; x < 8; x += 2){
-            if (block.shape[y][x/2] == 1){
+void Grid::draw(Block block)
+{
+    for (int y = 0; y < 4; y++)
+    {
+        for (int x = 0; x < 8; x += 2)
+        {
+            if (block.shape[y][x / 2] == 1)
+            {
                 mvprintw(block.y + y, block.x + x, "[");
                 mvprintw(block.y + y, block.x + x + 1, "]");
             }
