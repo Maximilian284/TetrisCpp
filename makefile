@@ -4,8 +4,8 @@ main: main.o grid.o functions.o block.o menu.o
 	g++ -o main main.o grid.o functions.o block.o menu.o -lncurses
 	rm *.o
 
-main.o: classes/main.cpp
-	g++ -c classes/main.cpp 
+main.o: main.cpp
+	g++ -c main.cpp 
 
 grid.o: classes/grid.cpp
 	g++ -c classes/grid.cpp 

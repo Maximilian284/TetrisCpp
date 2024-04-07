@@ -1,12 +1,14 @@
 #include <iostream>
 #include <cstring>
-#include <ncurses/ncurses.h>
-#include "classes.hpp"
+#include <ncurses.h>
+#include "classes/menu.hpp"
+#include "classes/grid.hpp"
+#include "classes/block.hpp"
+#include "classes/functions.hpp"
 
 using namespace std;
 
-int main(int arcg, char *argv[])
-{
+int main(int arcg, char *argv[]){
     Menu menu = Menu(22, 24, 0, 0);
     menu.show();
     menu.hide();
@@ -14,8 +16,7 @@ int main(int arcg, char *argv[])
     Grid grid = Grid(22, 24, 3, 1);
     Block blocks[3] = {Block(2, 3, 9), Block(2, 3, 9), Block(1, 3, 9)};
 
-    while (grid.running)
-    {
+    while (grid.running){
         grid.show();
         grid.draw(blocks[0]);
         blocks[0].move(grid, 1, 0);

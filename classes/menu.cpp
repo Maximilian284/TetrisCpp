@@ -1,5 +1,5 @@
-#include <ncurses/ncurses.h>
-#include "../classes.hpp"
+#include <ncurses.h>
+#include "menu.hpp"
 
 // Constructor
 // initializes the height, width, start_y, and start_x
@@ -8,8 +8,7 @@
 // @param int w = width
 // @param int y = start_y
 // @param int x = start_x
-Menu::Menu(int h, int w, int y, int x)
-{
+Menu::Menu(int h, int w, int y, int x){
     height = h;
     width = w;
     start_y = y;
@@ -20,8 +19,7 @@ Menu::Menu(int h, int w, int y, int x)
 // shows the menu
 //
 // @return void
-void Menu::show()
-{
+void Menu::show(){
     // initializes the ncurses library
     initscr();
 
@@ -62,7 +60,6 @@ void Menu::show()
 // hides the menu
 //
 // @return void
-void Menu::hide()
-{
+void Menu::hide(){
     endwin();
 };

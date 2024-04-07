@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "../classes.hpp"
+#include "functions.hpp"
 
 // Utilities functions
 //
@@ -12,7 +12,6 @@
 // @param T max = maximum number
 // @return T
 template <typename T>
-T randomNumber(T min, T max)
-{
+T randomNumber(T min, T max){
     return rand() % (max - min + 1) + min;
 };

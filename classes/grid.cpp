@@ -1,5 +1,6 @@
-#include <ncurses/ncurses.h>
-#include "../classes.hpp"
+#include <ncurses.h>
+#include "grid.hpp"
+#include "block.hpp"
 
 // Constructor
 // initializes the height, width, start_y, and start_x
@@ -8,24 +9,18 @@
 // @param int w = width
 // @param int y = start_y
 // @param int x = start_x
-Grid::Grid(int h, int w, int y, int x)
-{
+Grid::Grid(int h, int w, int y, int x){
     height = h;
     width = w;
     start_y = y;
     start_x = x;
     running = true;
 
-    for (int i = 0; i < 22; i++)
-    {
-        for (int j = 0; j < 12; j++)
-        {
-            if (j == 0 || j == 11 || i == 21)
-            {
+    for (int i = 0; i < 22; i++){
+        for (int j = 0; j < 12; j++){
+            if (j == 0 || j == 11 || i == 21){
                 matrix[i][j] = -1;
-            }
-            else
-            {
+            }else{
                 matrix[i][j] = 0;
             }
         }
